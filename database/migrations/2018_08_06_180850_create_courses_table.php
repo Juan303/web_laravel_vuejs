@@ -23,22 +23,24 @@ class CreateCoursesTable extends Migration
             $table->enum('status',[Course::PENDING, Course::PUBLISHED, Course::REJECTED])->default(Course::PENDING);
             $table->boolean('previous_approved')->default(false);
             $table->boolean('previous_rejected')->default(false);
-            
+
             //friendly url
             $table->string('slug');
 
             //FK
             $table->integer('teacher_id')->unsigned();
             $table->foreign('teacher_id')->references('id')->on('teachers');
+
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('category');
+            $table->foreign('category_id')->references('id')->on('categories');
+
             $table->integer('level_id')->unsigned();
             $table->foreign('level_id')->references('id')->on('levels');
 
             $table->timestamps();
 
             //borrado logico
-            $tables->softDeletes();
+            $table->softDeletes();
         });
     }
 

@@ -26,9 +26,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
             $table->string('image')->nullable();
+
+            $table->string('slug');
             
             //campos cashier
             $table->string('stripe_id')->nullable();
@@ -79,9 +82,11 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('user_social_accounts');
+        Schema::dropIfExists('suscriptions');
+
         Schema::dropIfExists('users');
         Schema::dropIfExists('roles');
-        Schema::dropIfExists('suscriptions');
-        Schema::dropIfExists('user_social_accounts');
+
     }
 }
