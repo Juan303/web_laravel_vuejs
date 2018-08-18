@@ -18,7 +18,7 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->enum('status',[Course::PENDING, Course::PUBLISHED, Course::REJECTED])->default(Course::PENDING);
             $table->boolean('previous_approved')->default(false);

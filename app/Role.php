@@ -24,4 +24,8 @@ class Role extends Model
     const ADMIN = 1;
     const TEACHER = 2;
     const STUDENT = 3;
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }

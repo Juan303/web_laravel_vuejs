@@ -6,6 +6,11 @@ use App\User;
 use App\Student;
 use App\Teacher;
 use App\Level;
+use App\Goal;
+use App\Review;
+use App\Requirement;
+use App\Category;
+use App\Course;
 
 class DatabaseSeeder extends Seeder
 {
@@ -48,7 +53,17 @@ class DatabaseSeeder extends Seeder
         factory(Level::class, 1)->create(['name' => 'Intermedio']);
         factory(Level::class, 1)->create(['name' => 'Avanzado']);
 
-        factory(Category::class, 5)->create();
+        factory(Category::class, 5)->create()
+        ->each(function(Category $c){
+            factory(Course::class, 20)->create(['category_id'=>$c->id])
+            ->each(function(Course $c){
+                $c->goals()->saveMany(factory(Goal::class, 3)->create());
+                $c->reviews()->saveMany(factory(Review::class, 5)->create());
+                $c->requirements()->saveMany(factory(Requirement::class, 3)->create());
+            });
+        });
+
+
 
 
     }
