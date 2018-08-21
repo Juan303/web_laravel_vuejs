@@ -73,7 +73,16 @@
         </nav>
 
         <main class="py-4">
-            @if(session)
+            @if(session('message'))
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="alert alert-{{ session('message')['type'] }}">
+                            <h4 class="alert-heading">{{ __("Información") }}</h4>
+                            <p>{{ session('message')['text'] }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
             @yield('content')
         </main>
     </div>
