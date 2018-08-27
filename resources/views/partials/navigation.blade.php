@@ -40,8 +40,8 @@
                             {{ __('Idioma') }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{{ route('set_language'), ['es'] }}">Español</a>
-                            <a class="dropdown-item" href="{{ route('set_language'), ['en'] }}">Ingles</a>
+                            <a class="dropdown-item" href="{{ route('set_language', ['es'])  }}">{{ __("Español") }}</a>
+                            <a class="dropdown-item" href="{{ route('set_language', ['en']) }}">{{ __("Ingles") }}</a>
                         </div>
 
 

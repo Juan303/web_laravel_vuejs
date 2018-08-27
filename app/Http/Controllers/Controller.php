@@ -10,4 +10,12 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function setLanguage($language){
+        if(array_key_exists($language, config('languages'))){
+            session()->put('applocale', $language);
+        }
+        session()->flash('message', ['type' => 'success', 'text'=>'Idioma cambiado']);
+        return back();
+    }
 }
