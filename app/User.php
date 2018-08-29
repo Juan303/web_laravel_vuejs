@@ -69,6 +69,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public static function navigation(){
+        if (auth()->check()){
+            return auth()->user()->role->name;
+        }
+        else{
+            return 'guest';
+        }
+    }
+
     public function role(){
         return $this->belongsTo(Role::class);
     }

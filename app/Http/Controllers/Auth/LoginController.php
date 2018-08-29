@@ -7,6 +7,7 @@ use App\Student;
 use App\User;
 use App\UserSocialAccount;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -39,6 +40,13 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        session()->flush();
+        return redirect('/login');
     }
 
     //SOCIALITE

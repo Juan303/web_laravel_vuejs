@@ -35,6 +35,7 @@
                 </ul>
                 <!-- parte derecha -->
                 <ul class="navbar-nav ml-auto">
+                    @include('partials.navigations.' . \App\User::navigation())
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ __('Idioma') }}
