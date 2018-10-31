@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 /**
  * App\Student
  *
@@ -22,11 +23,18 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     protected $fillable = ['user_id'];
+
+    protected $appends = ['courses_formatted'];
+
     public function courses(){
-        return $this->belongsToMany(Courses::class);
+        return $this->belongsToMany(Course::class);
     }
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function getCoursesFormattedAttribute(){
+        return $this->courses->pluck('name')->implode('<br/>');
     }
 }

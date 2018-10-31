@@ -3,6 +3,7 @@
         {{ auth()->user()->name }} <span class="caret"></span>
     </a>
     <div class="dropdown-menu" v-bind:aria-labelledby="navbarDropdown">
+        @include('partials.navigations.' . \App\User::navigation())
         <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             {{ __('Cerrar sesión') }}
 

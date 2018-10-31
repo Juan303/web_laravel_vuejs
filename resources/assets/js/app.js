@@ -15,7 +15,19 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+import {ServerTable} from 'vue-tables-2';
+Vue.use(ServerTable, {}, false, 'bootstrap4', 'default');
+
+//VUE HTTP RESOURCE
+import VueResource from 'vue-resource'
+Vue.use(VueResource);
+//.VUE HTTP RESOURCE
+
+import StripeForm from './components/StripeForm';
+Vue.component('stripe-form', StripeForm);
+
+import Courses from './components/Courses';
+Vue.component('courses-list', Courses);
 
 const app = new Vue({
     el: '#app'

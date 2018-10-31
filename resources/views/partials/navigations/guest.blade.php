@@ -1,2 +1,2 @@
-<li><a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a></li>
-<li><a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a></li>
+<a class="dropdown-item" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
+<a class="dropdown-item" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
